@@ -1,0 +1,111 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.5173069040721735 0.10820317654402714 -0.8489320582856117 2.7901146791830134
+  position 1.6215791394198231 0.9263512856159093 3.073621030368984
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 1.5 1.5
+}
+Robot {
+  translation 0.5 0.5 -0.000198488
+  rotation -0.9777472847705987 0.003031206956713844 -0.20976429369200877 0.029768804262196018
+  children [
+    DEF Body Transform {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 102.53562933671432
+        anchor 0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+        }
+        PositionSensor {
+        }
+      ]
+      endPoint Solid {
+        translation 0.04499999985536535 -3.7938104176033814e-06 0.024998859719801623
+        rotation 0.644703004805105 0.4115549995866888 0.6441898151247574 2.3601765199389684
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.005
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 102.53548306937512
+        anchor -0.045 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+        }
+        PositionSensor {
+        }
+      ]
+      endPoint Solid {
+        translation -0.04500000015719041 -3.762020607107735e-06 0.024998823501501774
+        rotation 0.6446854009562459 0.41161010429775946 0.6441722252890697 2.3600822222314184
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "<extern>"
+}
+Wall {
+  translation -0.25 -0.12 0
+  rotation 0 0 1 -1.5707953071795862
+  size 1.25 0.01 0.1
+}
+Wall {
+  translation 0.37 -0.25 0
+  name "wall(2)"
+  size 0.75 0.01 0.1
+}
+Wall {
+  translation 0.25 0.54 0
+  rotation 0 0 1 -1.5707953071795862
+  name "wall(1)"
+  size 0.425 0.01 0.1
+}
